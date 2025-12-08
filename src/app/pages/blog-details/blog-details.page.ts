@@ -5,13 +5,14 @@ import { ActivatedRoute } from '@angular/router';
 import { IonBackButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Blog } from 'src/app/interfaces/blog';
 import { blogStore } from 'src/app/state/blog.store';
+import { CapitalizeFirstPipe } from 'src/app/pipes/capitalize-first-pipe';
 
 @Component({
   selector: 'app-blog-details',
   templateUrl: './blog-details.page.html',
   styleUrls: ['./blog-details.page.scss'],
   standalone: true,
-  imports: [IonBackButton, IonButtons, IonCardTitle, IonCard, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCardHeader, IonCardContent], 
+  imports: [IonBackButton, IonButtons, IonCardTitle, IonCard, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCardHeader, IonCardContent, CapitalizeFirstPipe], 
 })
 export class BlogDetailsPage implements OnInit {
   blog!: Blog;

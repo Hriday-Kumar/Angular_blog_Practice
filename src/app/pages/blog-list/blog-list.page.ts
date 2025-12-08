@@ -6,13 +6,13 @@ import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonInfiniteScrol
 import { Blog } from 'src/app/interfaces/blog';
 import { BlogService } from 'src/app/services/blog';
 import { blogStore } from 'src/app/state/blog.store';
-
+import { CapitalizeFirstPipe } from 'src/app/pipes/capitalize-first-pipe';
 @Component({
   selector: 'app-blog-list',
   templateUrl: './blog-list.page.html',
   styleUrls: ['./blog-list.page.scss'],
   standalone: true,
-  imports: [IonInfiniteScrollContent, IonInfiniteScroll, IonLabel, IonItem, IonList, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonRouterLink, IonButtons, IonRouterLink, RouterLink]
+  imports: [IonInfiniteScrollContent, IonInfiniteScroll, IonLabel, IonItem, IonList, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonRouterLink, IonButtons, IonRouterLink, RouterLink, CapitalizeFirstPipe]
 })
 export class BlogListPage implements OnInit {
   blogs: Blog[] = [];

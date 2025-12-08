@@ -12,7 +12,7 @@
   
    <ion-card>
       <ion-card-header>
-         <ion-card-title>{{ blog?.title | titlecase }}</ion-card-title>
+         <ion-card-title>{{ blog?.title | json | capitalizeFirst  }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
          {{ blog?.body }}

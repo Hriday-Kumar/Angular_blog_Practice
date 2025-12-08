@@ -11,7 +11,7 @@
   <ion-list class="list">
     <ion-item *ngFor="let blog of blogs" >
     
-      <ion-a class="title" [routerLink]="['/blog-details', blog.id]"> {{ blog.title }}</ion-a>
+      <ion-a class="title" [routerLink]="['/blog-details', blog.id]"> {{ blog.title | capitalizeFirst }}</ion-a>
 
       <ion-buttons slot="end">
         <ion-button 
