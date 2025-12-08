@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>All Blogs</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/blog-add">Add Blog</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let blog of blogs" [routerLink]="['/blog-details', blog.id]">
+      <ion-label>
+        <h2>{{ blog.title }}</h2>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more blogs...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
