@@ -14,6 +14,10 @@ export class BlogStore {
         const currentBlogs = this.blogSubject.value;
         this.blogSubject.next([blog, ...currentBlogs])
     }
+    updateBlog(blog: Blog) {
+        const currentBlogs = this.blogSubject.value;
+        this.blogSubject.next(currentBlogs.map((x) => (x.id === blog.id ? blog : x)));
+    }
    
 }
 export const blogStore = new BlogStore();

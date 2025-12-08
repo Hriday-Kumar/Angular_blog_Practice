@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { IonCard, IonCardHeader, IonCardTitle, IonContent, IonHeader, IonTitle, IonToolbar, IonCardContent } from '@ionic/angular/standalone';
+import { ActivatedRoute } from '@angular/router';
+import { IonBackButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Blog } from 'src/app/interfaces/blog';
 import { blogStore } from 'src/app/state/blog.store';
 
@@ -11,7 +11,7 @@ import { blogStore } from 'src/app/state/blog.store';
   templateUrl: './blog-details.page.html',
   styleUrls: ['./blog-details.page.scss'],
   standalone: true,
-  imports: [IonCardTitle, IonCard, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCardHeader, IonCardContent], 
+  imports: [IonBackButton, IonButtons, IonCardTitle, IonCard, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCardHeader, IonCardContent], 
 })
 export class BlogDetailsPage implements OnInit {
   blog!: Blog;

@@ -5,7 +5,8 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="blogForm" (ngSubmit)="updateBlog()">
+   <div class="form-container">
+     <form [formGroup]="blogForm" (ngSubmit)="updateBlog()">
     <ion-item>
       <ion-label position="floating">Title</ion-label>
       <ion-input formControlName="title"></ion-input>
@@ -20,4 +21,5 @@
       Update Blog
     </ion-button>
   </form>
+   </div>
 </ion-content>

@@ -7,12 +7,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-item *ngFor="let blog of blogs">
-      <ion-label>
-        <ion-button [routerLink]="['/blog-details', blog.id]"> {{ blog.title }}</ion-button>
-      </ion-label>
+<ion-content class="content">
+  <ion-list class="list">
+    <ion-item *ngFor="let blog of blogs" >
+    
+      <ion-a class="title" [routerLink]="['/blog-details', blog.id]"> {{ blog.title }}</ion-a>
 
       <ion-buttons slot="end">
         <ion-button 

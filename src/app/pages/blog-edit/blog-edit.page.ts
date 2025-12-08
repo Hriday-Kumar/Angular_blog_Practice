@@ -1,4 +1,4 @@
-import { blogStore } from './../../state/blog.store';
+import { BlogStore, blogStore } from './../../state/blog.store';
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -15,12 +15,12 @@ import {
   IonTextarea 
 } from '@ionic/angular/standalone';
 import { BlogService } from 'src/app/services/blog';
-
 @Component({
   selector: 'app-blog-edit',
   templateUrl: './blog-edit.page.html',
   styleUrls: ['./blog-edit.page.scss'],
   standalone: true,
+  providers: [BlogStore],
   imports: [
     CommonModule,
     FormsModule,
@@ -45,6 +45,7 @@ export class BlogEditPage implements OnInit {
   private blogService = inject(BlogService);
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+  private blogStore = inject(BlogStore);
 
   ngOnInit() {
     this.blogForm = this.fb.group({
@@ -53,10 +54,8 @@ export class BlogEditPage implements OnInit {
     });
 
     this.id = this.route.snapshot.paramMap.get('id')!;
-    console.log('id is ----------', this.id);
 
     this.blogService.fetchSingleBlog(this.id).subscribe((blog) => {
-      console.log('fetch blog data-----', blog);
       this.blogForm.patchValue(blog);
     });
   }
@@ -67,9 +66,9 @@ export class BlogEditPage implements OnInit {
       return;
     }
     this.blogService.updateBlog(this.id, this.blogForm.value).subscribe(() => {
-      
-      this.router.navigate(['/blog-list']);
-    });
+    blogStore.updateBlog({ id: this.id, ...this.blogForm.value }); 
+    this.router.navigate(['/blog-list']);
+  });
   }
 
 }

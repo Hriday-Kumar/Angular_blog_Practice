@@ -12,7 +12,7 @@ import { blogStore } from 'src/app/state/blog.store';
   templateUrl: './blog-list.page.html',
   styleUrls: ['./blog-list.page.scss'],
   standalone: true,
-  imports: [IonIcon, IonInfiniteScrollContent, IonInfiniteScroll, IonLabel, IonItem, IonList, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonRouterLink, IonButtons, IonRouterLink, RouterLink]
+  imports: [IonInfiniteScrollContent, IonInfiniteScroll, IonLabel, IonItem, IonList, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonRouterLink, IonButtons, IonRouterLink, RouterLink]
 })
 export class BlogListPage implements OnInit {
   blogs: Blog[] = [];
@@ -37,11 +37,11 @@ export class BlogListPage implements OnInit {
     });
   }
   loadInitialBlogs() {
-    this.blogservice.fetchBlogsFromApi().subscribe((data) => {
-      console.log('data------', data);
-      blogStore.setBlogs(data);
+    // this.blogservice.fetchBlogsFromApi().subscribe((data) => {
+    //   console.log('data------', data);
+    //   blogStore.setBlogs(data);
       
-    });
+    // });
   }
  
   loadMore(event: any) {

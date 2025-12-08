@@ -1,13 +1,18 @@
 <ion-header [translucent]="true">
+   
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/blog-list"></ion-back-button>
+    </ion-buttons>
     <ion-title>Blog details</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  
    <ion-card>
       <ion-card-header>
-         <ion-card-title>{{ blog?.title }}</ion-card-title>
+         <ion-card-title>{{ blog?.title | titlecase }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
          {{ blog?.body }}
