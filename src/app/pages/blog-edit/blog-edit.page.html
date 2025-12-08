@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Blog</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="blogForm" (ngSubmit)="updateBlog()">
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input formControlName="title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Body</ion-label>
+      <ion-textarea formControlName="body"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="full" type="submit" [disabled]="blogForm.invalid">
+      Update Blog
+    </ion-button>
+  </form>
+</ion-content>

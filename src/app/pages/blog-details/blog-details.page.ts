@@ -15,19 +15,16 @@ import { blogStore } from 'src/app/state/blog.store';
 })
 export class BlogDetailsPage implements OnInit {
   blog!: Blog;
-  id!: number;
+  id!:  string | number;
   private route = inject(ActivatedRoute);
 
   constructor() { }
 
   ngOnInit() {
-    this.id = Number(this.route.snapshot.paramMap.get('id')!);
-    
+    this.id = (this.route.snapshot.paramMap.get('id')!);
     blogStore.blogs$.subscribe((list) => {
       this.blog = list.find((x) => x.id === this.id)!;
-      console.log('this blog', this.blog)
     });
   }
-  
 
 }

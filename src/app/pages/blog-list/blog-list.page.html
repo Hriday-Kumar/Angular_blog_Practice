@@ -9,15 +9,35 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let blog of blogs" [routerLink]="['/blog-details', blog.id]">
+    <ion-item *ngFor="let blog of blogs">
       <ion-label>
-        <h2>{{ blog.title }}</h2>
+        <ion-button [routerLink]="['/blog-details', blog.id]"> {{ blog.title }}</ion-button>
       </ion-label>
+
+      <ion-buttons slot="end">
+        <ion-button 
+          fill="clear" 
+          color="primary"
+          [routerLink]="['/blog-edit', blog.id]"
+        >
+          Edit
+        </ion-button>
+
+        <ion-button 
+          fill="clear" 
+          color="danger"
+          (click)="deleteBlog(blog.id!)"
+        >
+        Delete
+        </ion-button>
+      </ion-buttons>
     </ion-item>
   </ion-list>
 
   <ion-infinite-scroll (ionInfinite)="loadMore($event)">
-    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more blogs...">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more blogs...">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

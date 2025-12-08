@@ -22,4 +22,9 @@ export const routes: Routes = [
     path: 'blog-add',
     loadComponent: () => import('./pages/blog-add/blog-add.page').then( m => m.BlogAddPage)
   },
+  {
+    path: 'blog-edit/:id',
+    loadComponent: () => import('./pages/blog-edit/blog-edit.page').then( m => m.BlogEditPage)
+  },
+  
 ];
