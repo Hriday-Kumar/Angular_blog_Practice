@@ -15,6 +15,7 @@ import {
   IonTextarea 
 } from '@ionic/angular/standalone';
 import { BlogService } from 'src/app/services/blog';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-blog-edit',
   templateUrl: './blog-edit.page.html',
@@ -46,6 +47,7 @@ export class BlogEditPage implements OnInit {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private blogStore = inject(BlogStore);
+  private toastController = inject(ToastController);
 
   ngOnInit() {
     this.blogForm = this.fb.group({
@@ -60,15 +62,26 @@ export class BlogEditPage implements OnInit {
     });
   }
 
-  updateBlog(): void {
+  async updateBlog(): Promise<void> {
     if (this.blogForm.invalid) {
       this.blogForm.markAllAsTouched();
       return;
     }
-    this.blogService.updateBlog(this.id, this.blogForm.value).subscribe(() => {
-    blogStore.updateBlog({ id: this.id, ...this.blogForm.value }); 
-    this.router.navigate(['/blog-list']);
-  });
+  this.blogService.updateBlog(this.id, this.blogForm.value).subscribe(() => {
+  blogStore.updateBlog({ id: this.id, ...this.blogForm.value }); 
+
+  this.toastController.create({
+    message: 'Blog updated successfully!',
+    duration: 2000,
+    color: 'success',
+    position: 'top',
+    buttons: ['Close']
+  }).then(toast => toast.present());
+
+  this.router.navigate(['/blog-list']);
+});
+   
   }
+
 
 }

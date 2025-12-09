@@ -6,13 +6,13 @@ import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonNote,
 import { Blog } from 'src/app/interfaces/blog';
 import { BlogService } from 'src/app/services/blog';
 import { blogStore } from 'src/app/state/blog.store';
-
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-blog-add',
   templateUrl: './blog-add.page.html',
   styleUrls: ['./blog-add.page.scss'],
   standalone: true,
-  imports: [IonNote, IonButton, IonInput, IonItem, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, IonContent, IonHeader, IonTitle, IonToolbar, IonLabel]
+  imports: [IonButton, IonInput, IonItem, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, ReactiveFormsModule, IonContent, IonHeader, IonTitle, IonToolbar, IonLabel]
 })
 export class BlogAddPage implements OnInit {
   blogForm!: FormGroup;
@@ -21,6 +21,7 @@ export class BlogAddPage implements OnInit {
   private fb = inject(FormBuilder);
   private blogService = inject(BlogService);
   private router = inject(Router);
+  private toastcontroller = inject(ToastController);
 
   constructor() { }
 
@@ -30,8 +31,7 @@ export class BlogAddPage implements OnInit {
     body: ['', [Validators.required, Validators.minLength(3)]],
   })
   }
-
-  submitBlog(): void {
+ async submitBlog(): Promise<void> {
     if (this.blogForm.invalid) {
       this.blogForm.markAllAsTouched();
       return;
@@ -41,6 +41,14 @@ export class BlogAddPage implements OnInit {
 
     this.blogService.addBlog(blog).subscribe((newBlog) => {
       blogStore.addBlog(newBlog);
+      this.toastcontroller.create({
+        message: 'Blog added successfully!',
+        duration: 2000,
+        color: 'success',
+        position: 'top',
+        buttons: ['Close']
+      }).then(toast => toast.present());
+
       this.router.navigate(['/blog-list']);
     })
 
