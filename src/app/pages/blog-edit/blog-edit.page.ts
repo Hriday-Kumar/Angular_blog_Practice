@@ -1,21 +1,21 @@
-import { BlogStore, blogStore } from './../../state/blog.store';
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { 
-  IonButton, 
-  IonContent, 
-  IonHeader, 
-  IonItem, 
-  IonLabel, 
-  IonTitle, 
-  IonToolbar, 
-  IonInput, 
-  IonTextarea 
-} from '@ionic/angular/standalone';
-import { BlogService } from 'src/app/services/blog';
 import { ToastController } from '@ionic/angular';
+import {
+  IonButton,
+  IonContent,
+  IonHeader,
+  IonInput,
+  IonItem,
+  IonLabel,
+  IonTextarea,
+  IonTitle,
+  IonToolbar
+} from '@ionic/angular/standalone';
+import { BlogService } from 'src/app/services/blog.service';
+import { BlogStore, blogStore } from './../../state/blog.store';
 @Component({
   selector: 'app-blog-edit',
   templateUrl: './blog-edit.page.html',

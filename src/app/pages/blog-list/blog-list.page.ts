@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonLabel, IonList, IonRouterLink, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonButton, IonButtons, IonContent, IonHeader, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonLabel, IonList, IonRouterLink, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Blog } from 'src/app/interfaces/blog';
-import { BlogService } from 'src/app/services/blog';
+import { BlogService } from 'src/app/services/blog.service';
 import { blogStore } from 'src/app/state/blog.store';
-import { CapitalizeFirstPipe } from 'src/app/pipes/capitalize-first-pipe';
+import { CapitalizeFirstPipe } from 'src/app/utils/capitalize-first-pipe';
 @Component({
   selector: 'app-blog-list',
   templateUrl: './blog-list.page.html',

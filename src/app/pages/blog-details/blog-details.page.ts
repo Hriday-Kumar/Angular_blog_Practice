@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IonBackButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Blog } from 'src/app/interfaces/blog';
 import { blogStore } from 'src/app/state/blog.store';
-import { CapitalizeFirstPipe } from 'src/app/pipes/capitalize-first-pipe';
+import { CapitalizeFirstPipe } from 'src/app/utils/capitalize-first-pipe';
 
 @Component({
   selector: 'app-blog-details',
