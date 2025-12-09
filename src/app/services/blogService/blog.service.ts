@@ -29,7 +29,7 @@ export class BlogService {
   fetchSingleBlog(id: string | number): Observable<Blog> {
     return this.http.get<Blog>(`${environment.BackendUrl}/blogs/${id}`);
   }
-
+  
   addBlog(blog: Blog): Observable<Blog> {
     return this.http.post<Blog>(`${environment.BackendUrl}/blogs`, blog);
   }
