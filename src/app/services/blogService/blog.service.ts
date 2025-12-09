@@ -1,27 +1,21 @@
-
+import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Blog } from 'src/app/interfaces/blog';
 import { environment } from 'src/environments/environment';
-import { ApiService } from '../http-service/http-client.service';
-
 @Injectable({
   providedIn: 'root',
 })
 export class BlogService {
-  private api = inject(ApiService);
 
-  constructor() {}
+  private http = inject(HttpClient);
 
   fetchBlogsFromApi(): Observable<Blog[]> {
-    this.api.setBaseUrl(environment.apiUrl);
-    return this.api.get<Blog[]>('posts?_limit=20');
+    return this.http.get<Blog[]>(`${environment.apiUrl}/posts?_limit=20`);
   }
 
   fetchBlogsFromDB(): Observable<Blog[]> {
-    this.api.setBaseUrl(environment.BackendUrl);
-
-    return this.api.get<any>('blogs').pipe(
+    return this.http.get<any>(`${environment.BackendUrl}/blogs`).pipe(
       map((res) => {
         if (!res) return [];
         return Object.keys(res).map((key) => ({
@@ -31,23 +25,20 @@ export class BlogService {
       })
     );
   }
+
   fetchSingleBlog(id: string | number): Observable<Blog> {
-    this.api.setBaseUrl(environment.BackendUrl);
-    return this.api.get<Blog>(`blogs/${id}`);
+    return this.http.get<Blog>(`${environment.BackendUrl}/blogs/${id}`);
   }
 
   addBlog(blog: Blog): Observable<Blog> {
-    this.api.setBaseUrl(environment.BackendUrl);
-    return this.api.post<Blog>('blogs', blog);
+    return this.http.post<Blog>(`${environment.BackendUrl}/blogs`, blog);
   }
 
   updateBlog(id: string | number, blog: Partial<Blog>): Observable<Blog> {
-    this.api.setBaseUrl(environment.BackendUrl);
-    return this.api.put<Blog>(`blogs/${id}`, blog);
+    return this.http.put<Blog>(`${environment.BackendUrl}/blogs/${id}`, blog);
   }
 
   deleteBlog(id: string | number): Observable<any> {
-    this.api.setBaseUrl(environment.BackendUrl);
-    return this.api.delete(`blogs/${id}`);
+    return this.http.delete(`${environment.BackendUrl}/blogs/${id}`);
   }
 }
