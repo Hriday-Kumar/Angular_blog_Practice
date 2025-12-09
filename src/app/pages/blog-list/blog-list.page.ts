@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { IonButton, IonButtons, IonContent, IonHeader, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonLabel, IonList, IonRouterLink, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Blog } from 'src/app/interfaces/blog';
-import { BlogService } from 'src/app/services/blog.service';
+import { BlogService } from 'src/app/services/blogService/blog.service';
 import { blogStore } from 'src/app/state/blog.store';
 import { CapitalizeFirstPipe } from 'src/app/utils/capitalize-first-pipe';
 @Component({
@@ -12,7 +12,7 @@ import { CapitalizeFirstPipe } from 'src/app/utils/capitalize-first-pipe';
   templateUrl: './blog-list.page.html',
   styleUrls: ['./blog-list.page.scss'],
   standalone: true,
-  imports: [IonInfiniteScrollContent, IonInfiniteScroll, IonLabel, IonItem, IonList, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonRouterLink, IonButtons, IonRouterLink, RouterLink, CapitalizeFirstPipe]
+  imports: [IonInfiniteScrollContent, IonInfiniteScroll, IonItem, IonList, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonRouterLink, IonButtons, IonRouterLink, RouterLink, CapitalizeFirstPipe]
 })
 export class BlogListPage implements OnInit {
   blogs: Blog[] = [];

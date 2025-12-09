@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { Blog } from 'src/app/interfaces/blog';
-import { BlogService } from 'src/app/services/blog.service';
+import { BlogService } from 'src/app/services/blogService/blog.service';
 import { blogStore } from 'src/app/state/blog.store';
 @Component({
   selector: 'app-blog-add',

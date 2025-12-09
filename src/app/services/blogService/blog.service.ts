@@ -1,8 +1,9 @@
+
 import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Blog } from '../interfaces/blog';
-import { ApiService } from './api.service';
+import { ApiService } from '../apiService/api.service';
+import { Blog } from 'src/app/interfaces/blog';
 
 @Injectable({
   providedIn: 'root',

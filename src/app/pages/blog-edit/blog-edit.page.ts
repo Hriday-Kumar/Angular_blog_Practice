@@ -14,7 +14,7 @@ import {
   IonTitle,
   IonToolbar
 } from '@ionic/angular/standalone';
-import { BlogService } from 'src/app/services/blog.service';
+import { BlogService } from 'src/app/services/blogService/blog.service';
 import { BlogStore, blogStore } from './../../state/blog.store';
 @Component({
   selector: 'app-blog-edit',
